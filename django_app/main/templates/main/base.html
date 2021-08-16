@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %} <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,10 +10,56 @@
     {% else %}
         <title>Main Website</title>
     {% endif %}
-</head>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
 <body>
-    {% block content %} {% endblock %}
+    <header>
+         <!--NAVBAR SECTION-->
+            <nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
+
+                <div class="container">
+                <!-- SECTION LOGO NAVBAR -->
+                <div class="navbar-brand">
+                    <a href="{% url 'main-home' %}" class="navbar-item">
+                        <figure class="image">
+                            <img src="{% static 'images/django_logo.png' %}" alt="django Logo"/>
+                        </figure>
+                    </a>
+                    <!-- TITTLE CHURROS -->
+
+                    <!-- BURGER NAV -->
+                    <span class="navbar-burger" data-target="navbar-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    </span>
+
+                </div>
+                <!-- SECTION LOGO NAVBAR OVER -->
+                
+                <!-- NAVBAR MENU -->
+                <div id="navbar-menu" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a href="{% url 'main-home' %}" class="navbar-item"><span class="subtitle is-6 is-family-sans-serif">Home</span></a>
+                        <a href="{% url 'main-about' %}" class="navbar-item"><span class="subtitle is-6 is-family-sans-serif">About</span></a>
+                    </div>
+                    <div class="navbar-end">
+                        <a href="#" class="navbar-item"><span class="subtitle is-6 is-family-sans-serif">Login</span></a>
+                        <a href="#" class="navbar-item"><span class="subtitle is-6 is-family-sans-serif">Register</span></a>
+                    </div>
+                </div>
+                <!-- NAVBAR MENU OVER -->
+
+                </div>
+                <!-- CONTAINER END -->
+            </nav>
+            <!-- NAVBAR SECTION OVER -->
+    </header>
+    <div class="section"></div>
+    <div class="section">
+        {% block content %} {% endblock %}
+    </div>
 </body>
 
 </html>
