@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{% load bulma_tags %}
+{% block content %}
+    <h1 class="title is-4">Register User</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            {{ form|bulma }}
+        </fieldset>
+        <br>
+        <div class="field is-grouped">
+            <button class="button is-primary is-outlined" type="submit">Sign Up</button>
+        </div>
+    </form>
+    <br>
+    <center>
+        Already Have An Account? <a href="#">Sign In</a>
+    </center>
+{% endblock content %}

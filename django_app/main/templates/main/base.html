@@ -50,7 +50,7 @@
                 <div class="navbar-end">
                     <a href="#" class="navbar-item"><span
                             class="subtitle is-6 is-family-sans-serif">Login</span></a>
-                    <a href="#" class="navbar-item"><span
+                    <a href="{% url 'user-register' %}" class="navbar-item"><span
                             class="subtitle is-6 is-family-sans-serif">Register</span></a>
                 </div>
             </div>
@@ -65,6 +65,14 @@
     <div class="container">
         <div class="columns is-mobile">
             <div class="column is-9">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="notification is-{{ message.tags }}">
+                            <button class="delete"></button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 {% block content %} {% endblock %}
             </div>
             <div class="column">
@@ -82,5 +90,15 @@
         </div>
     </div>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+            const $notification = $delete.parentNode;
 
+            $delete.addEventListener('click', () => {
+                $notification.parentNode.removeChild($notification);
+            });
+        });
+    });
+</script>
 </html>

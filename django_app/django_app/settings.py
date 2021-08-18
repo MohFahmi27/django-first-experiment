@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main.apps.MyFirstDjangoAppConfig',
+    'users.apps.UsersConfig',
+    'bulma',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
