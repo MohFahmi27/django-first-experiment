@@ -48,10 +48,17 @@
                             class="subtitle is-6 is-family-sans-serif">About</span></a>
                 </div>
                 <div class="navbar-end">
-                    <a href="#" class="navbar-item"><span
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'user-profile' %}" class="navbar-item"><span
+                            class="subtitle is-6 is-family-sans-serif">Profile</span></a>
+                        <a href="{% url 'logout' %}" class="navbar-item"><span
+                            class="subtitle is-6 is-family-sans-serif">Logout</span></a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="navbar-item"><span
                             class="subtitle is-6 is-family-sans-serif">Login</span></a>
-                    <a href="{% url 'user-register' %}" class="navbar-item"><span
+                        <a href="{% url 'user-register' %}" class="navbar-item"><span
                             class="subtitle is-6 is-family-sans-serif">Register</span></a>
+                    {% endif %}
                 </div>
             </div>
             <!-- NAVBAR MENU OVER -->
