@@ -1,4 +1,14 @@
 {% extends "main/base.html" %}
 {% block content %}
-    <h1 class="title is-2">{{ user.username }}</h1>
+    <div class="columns is-vcentered">
+        <div class="column is-2">    
+            <figure class="image is-1by1">
+                <img class="is-rounded" src="{{ user.profile.image.url }}" alt="Profile Image">
+            </figure>
+        </div>
+        <div class="column">
+            <h1 class="title is-4">{{ user.username }}</h1>
+            <h3 class="subtitle is-6">{{ user.email }}</h3>
+        </div>
+    </div>
 {% endblock content %}
