@@ -1,14 +1,31 @@
 {% extends "main/base.html" %}
+{% load bulma_tags %}
 {% block content %}
-    <div class="columns is-vcentered">
-        <div class="column is-2">    
-            <figure class="image is-1by1">
-                <img class="is-rounded" src="{{ user.profile.image.url }}" alt="Profile Image">
-            </figure>
+    <div class="section">
+        <div class="columns is-vcentered">
+            <div class="column is-2">    
+                <figure class="image is-1by1">
+                    <img class="is-rounded" src="{{ user.profile.image.url }}" alt="Profile Image">
+                </figure>
+            </div>
+            <div class="column">
+                <h1 class="title is-4">{{ user.username }}</h1>
+                <h3 class="subtitle is-6">{{ user.email }}</h3>
+            </div>
         </div>
-        <div class="column">
-            <h1 class="title is-4">{{ user.username }}</h1>
-            <h3 class="subtitle is-6">{{ user.email }}</h3>
-        </div>
+    </div>
+    <div class="section">
+        <h4 class="title is-5">Profile Info</h4>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset>
+                {{ user_form|bulma }}
+                {{ profile_form|bulma }}
+            </fieldset>
+            <br>
+            <div class="field is-grouped">
+                <button class="button is-primary" type="submit">Update</button>
+            </div>
+        </form>
     </div>
 {% endblock content %}

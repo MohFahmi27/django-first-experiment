@@ -18,12 +18,21 @@
                 <div class="card-content">
                     <div class="content">
                         {{ post.content }}
-                        <br>
-                        <p>By <b>{{ post.author }}</b> on {{ post.date_posted|date:"d F Y" }}</p>
                     </div>
                 </div>
                 <footer class="card-footer">
-                    <a href="#" class="card-footer-item">Read More</a>
+                    <div class="card-footer-item">
+                        <div class="columns is-vcentered is-mobile">
+                            <div class="column is-2">
+                                <figure class="image is-32x32">
+                                    <img class="is-rounded" src="{{ post.author.profile.image.url }}" alt="Profile Image">
+                                </figure> 
+                            </div>
+                            <div class="column">
+                                <strong>{{ post.author }}</strong> - {{ post.date_posted|date:"d F Y" }}
+                            </div>
+                        </div>
+                    </div>
                     <a href="#" class="card-footer-item">Save</a>
                 </footer>
             </div>
